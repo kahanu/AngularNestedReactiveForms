@@ -15,41 +15,58 @@ export class CompanyComponent implements OnInit {
   phoneTypes: PhoneType[];
   formResult: Company;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    this.company = this.getCompany();
-    this.initForm(this.company);
+    this.getCompany();
+    this.getPhoneTypes();
+    this.initForm();
   }
 
-  getCompany(): Company {
-    return {
+  getCompany() {
+    this.company = {
       id: 1,
       name: 'Acme Widgets, LLC',
       fein: '95-10101039',
-      phones: null
+      phones: [
+        { id: 1, phoneNumber: '818 384-4438', phoneTypeId: 2 },
+        { id: 2, phoneNumber: '626 393-1192', phoneTypeId: 1 }
+      ]
     };
   }
 
-  initPhone() {
+  getPhoneTypes() {
+    this.phoneTypes = [
+      { id: 1, type: 'Home' },
+      { id: 2, type: 'Cell' },
+      { id: 3, type: 'Work' }
+    ];
+  }
+
+  initPhone(model?: Phone) {
     return this.fb.group({
-      phoneNumber: ['']
+      phoneNumber: [model ? model.phoneNumber : ''],
+      phoneTypeId: [model ? model.phoneTypeId : 1]
     });
   }
 
-  initPhoneArray() {
-    const arr = this.fb.array([]);
+  initPhoneArray(model?: Phone[]) {
+    let arr = this.fb.array([]);
+
+    if (model) {
+      const fgs = model.map(item => this.initPhone(item));
+      arr = this.fb.array(fgs);
+    }
 
     return arr;
   }
-
 
   initForm(model?: Company) {
     this.companyFormGroup = this.fb.group({
       id: [model ? model.id : Helpers.emptyGuid],
       name: [model ? model.name : ''],
       fein: [model ? model.fein : ''],
-      phones: this.initPhoneArray()
+      phones: model ? this.initPhoneArray(model.phones) : this.initPhoneArray()
     });
   }
 
@@ -60,12 +77,12 @@ export class CompanyComponent implements OnInit {
   }
 
   addPhone() {
-    const control = (<FormArray>this.companyFormGroup.get('phones'));
+    const control = <FormArray>this.companyFormGroup.get('phones');
     control.push(this.initPhone());
   }
 
   removePhone(i: number) {
-    const control = (<FormArray>this.companyFormGroup.get('phones'));
+    const control = <FormArray>this.companyFormGroup.get('phones');
     control.removeAt(i);
   }
 }

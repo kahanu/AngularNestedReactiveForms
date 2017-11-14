@@ -10,7 +10,7 @@ export class PhoneType extends Entity {
 
 export class Phone extends Entity {
   phoneNumber: string;
-  // phoneTypeId: string;
+  phoneTypeId: number;
 }
 
 export class Company extends Entity {

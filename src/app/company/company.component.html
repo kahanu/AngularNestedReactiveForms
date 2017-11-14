@@ -1,17 +1,40 @@
 <div class="container">
-  <div class="row" *ngIf="company">
+  <div class="row">
     <div class="col-md-6">
       <h2>Company</h2>
       <form [formGroup]="companyFormGroup">
-        <div class="form-group">
-          <label for="companyName">Name</label>
+        <div class="form-group col-md-6">
+          <label for="name">Name</label>
           <input type="text" formControlName="name" class="form-control">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="fein">FEIN</label>
+          <input type="text" formControlName="fein" class="form-control">
+        </div>
+        <div formArrayName="phones">
+          <div *ngFor="let phone of companyFormGroup.get('phones')['controls']; let i = index">
+            <div [formGroupName]="i">
+              <div class="form-group col-md-4">
+                <label for="phone">Phone Number</label>
+                <input type="text" formControlName="phoneNumber" class="form-control">
+              </div>
+              <div class="col-md-1">
+                <i class="glyphicon glyphicon-remove pull-right" (click)="removePhone(i)"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-md-12">
+          <button type="button" class="btn btn-default btn-sm" (click)="addPhone()">Add Phone</button>
+        </div>
+        <div class="form-group col-md-12">
+          <button type="button" class="btn btn-primary" (click)="save()">Save</button>
         </div>
       </form>
     </div>
     <div class="col-md-6">
       <h2>Form State</h2>
-      <pre>{{ company | json }}</pre>
+      <pre>{{ formResult | json }}</pre>
     </div>
   </div>
 </div>

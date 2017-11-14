@@ -1,5 +1,5 @@
 export class Entity {
-  id: any;
+  id: string;
 }
 
 
@@ -10,7 +10,7 @@ export class PhoneType extends Entity {
 
 export class Phone extends Entity {
   phoneNumber: string;
-  phoneTypeId: number;
+  phoneTypeId: string;
 }
 
 export class Company extends Entity {

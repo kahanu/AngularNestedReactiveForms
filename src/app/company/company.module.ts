@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 import { CompanyRoutingModule } from './company-routing.module';
 import { CompanyComponent } from './company.component';
 import { SharedModule } from '../shared/shared.module';
+import { PhoneListFormComponent } from './phone-list-form/phone-list-form.component';
 
 @NgModule({
   imports: [SharedModule, CompanyRoutingModule],
-  declarations: [CompanyComponent]
+  declarations: [CompanyComponent, PhoneListFormComponent]
 })
 export class CompanyModule {}

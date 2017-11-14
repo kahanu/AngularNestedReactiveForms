@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row" *ngIf="company">
+    <div class="col-md-6">
+      <h2>Company</h2>
+      <form [formGroup]="companyFormGroup">
+        <div class="form-group">
+          <label for="companyName">Name</label>
+          <input type="text" formControlName="name" class="form-control">
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h2>Form State</h2>
+      <pre>{{ company | json }}</pre>
+    </div>
+  </div>
+</div>

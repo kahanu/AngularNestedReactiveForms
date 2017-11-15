@@ -16,6 +16,7 @@ export class CompanyComponent implements OnInit {
   phoneTypes: PhoneType[];
   formResult: Company;
   commonFormGroups: CommonFormGroups;
+  useBlankForm = true;
 
   constructor(private fb: FormBuilder) {
     this.commonFormGroups = new CommonFormGroups(fb);
@@ -23,8 +24,8 @@ export class CompanyComponent implements OnInit {
 
   ngOnInit() {
     this.getCompany();
-    this.getPhoneTypes();
-    this.initForm(this.company);
+    // this.getPhoneTypes();
+    this.initForm();
   }
 
   getCompany() {
@@ -39,13 +40,13 @@ export class CompanyComponent implements OnInit {
     };
   }
 
-  getPhoneTypes() {
-    this.phoneTypes = [
-      { id: '07d86f09-c3e2-4082-ae1d-8b668b0aedcb', type: 'Home' },
-      { id: '9411e3a2-b4c9-4833-87ed-36f8dd360b8e', type: 'Cell' },
-      { id: '07e8614f-077f-4469-8670-e7d083f2eb0c', type: 'Work' }
-    ];
-  }
+  // getPhoneTypes() {
+  //   this.phoneTypes = [
+  //     { id: '07d86f09-c3e2-4082-ae1d-8b668b0aedcb', type: 'Home' },
+  //     { id: '9411e3a2-b4c9-4833-87ed-36f8dd360b8e', type: 'Cell' },
+  //     { id: '07e8614f-077f-4469-8670-e7d083f2eb0c', type: 'Work' }
+  //   ];
+  // }
 
   // initPhone(model?: Phone) {
   //   return this.fb.group({

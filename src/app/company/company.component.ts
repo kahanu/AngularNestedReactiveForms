@@ -22,7 +22,7 @@ export class CompanyComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getCompany(); // comment out for blank form.
+    this.getCompany(); // comment out for blank form.
     this.initForm(this.company);
   }
 

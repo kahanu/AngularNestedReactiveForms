@@ -4,7 +4,7 @@
       <div *ngFor="let phone of phones; let i = index" class="panel panel-default">
         <div class="panel-heading">
           <span>Phone {{ i + 1 }}</span>
-          <i class="glyphicon glyphicon-remove pull-right" (click)="removePhone(i)"></i>
+          <i class="glyphicon glyphicon-remove pull-right" *ngIf="phones.length > 1" (click)="removePhone(i)"></i>
         </div>
         <div class="panel-body">
 

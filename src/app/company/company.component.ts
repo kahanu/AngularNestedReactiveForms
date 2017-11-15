@@ -1,6 +1,6 @@
 import { Helpers } from './../shared/helpers/helpers';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormArray } from '@angular/forms';
+import { FormGroup, FormArray, Validators } from '@angular/forms';
 import { Company, Phone, PhoneType } from '../shared/models/models';
 import { FormBuilder } from '@angular/forms';
 import { CommonFormGroups } from '../shared/formgroups/common-form-groups';
@@ -22,7 +22,7 @@ export class CompanyComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getCompany(); // comment out for blank form.
+    // this.getCompany(); // comment out for blank form.
     this.initForm(this.company);
   }
 
@@ -49,11 +49,8 @@ export class CompanyComponent implements OnInit {
   initForm(model?: Company) {
     this.companyFormGroup = this.fb.group({
       id: [model ? model.id : Helpers.emptyGuid],
-      name: [model ? model.name : ''],
-      fein: [model ? model.fein : ''],
-      phones: model
-        ? this.commonFormGroups.initPhoneArray(model.phones)
-        : this.commonFormGroups.initPhoneArray()
+      name: [model ? model.name : '', [Validators.required]],
+      fein: [model ? model.fein : '']
     });
   }
 

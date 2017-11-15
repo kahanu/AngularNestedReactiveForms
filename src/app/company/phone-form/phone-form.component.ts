@@ -18,20 +18,16 @@ export class PhoneFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.commonFormGroups = new CommonFormGroups(fb);
-    console.log('phonesGroup: ', this.phonesGroup);
   }
 
   ngOnInit() {
     this.initForm(this.phone);
     this.getPhoneTypes();
-    this.phonesGroup.push(this.phoneForm);
-    console.log('phonesGroup on init: ', this.phonesGroup);
   }
 
   initForm(phone?: Phone) {
-    console.log('calling init phone form: ', phone);
     this.phoneForm = this.commonFormGroups.initPhone(phone);
-    console.log('phone form - phoneForm: ', this.phoneForm);
+    this.phonesGroup.push(this.phoneForm);
   }
 
   getPhoneTypes() {

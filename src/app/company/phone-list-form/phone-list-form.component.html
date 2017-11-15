@@ -1,4 +1,4 @@
-<div *ngIf="phones">
+<div>
   <div [formGroup]="parentForm">
     <div formArrayName="phones">
       <div *ngFor="let phone of phones; let i = index" class="panel panel-default">
@@ -6,7 +6,7 @@
           <span>Phone {{ i + 1 }}</span>
           <i class="glyphicon glyphicon-remove pull-right" (click)="removePhone(i)"></i>
         </div>
-        <div [formGroupName]="i" class="panel-body">
+        <div class="panel-body">
 
           <app-phone-form [phonesGroup]="parentForm.get('phones')" [phone]="phone"></app-phone-form>
           <!-- <div class="form-group col-md-6">

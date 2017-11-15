@@ -23,7 +23,7 @@ export class CompanyComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getCompany();
+    // this.getCompany();
     // this.getPhoneTypes();
     this.initForm();
   }
@@ -40,32 +40,6 @@ export class CompanyComponent implements OnInit {
     };
   }
 
-  // getPhoneTypes() {
-  //   this.phoneTypes = [
-  //     { id: '07d86f09-c3e2-4082-ae1d-8b668b0aedcb', type: 'Home' },
-  //     { id: '9411e3a2-b4c9-4833-87ed-36f8dd360b8e', type: 'Cell' },
-  //     { id: '07e8614f-077f-4469-8670-e7d083f2eb0c', type: 'Work' }
-  //   ];
-  // }
-
-  // initPhone(model?: Phone) {
-  //   return this.fb.group({
-  //     phoneNumber: [model ? model.phoneNumber : ''],
-  //     phoneTypeId: [model ? model.phoneTypeId : 1]
-  //   });
-  // }
-
-  // initPhoneArray(model?: Phone[]) {
-  //   let arr = this.fb.array([]);
-
-  //   if (model) {
-  //     const fgs = model.map(item => this.initPhone(item));
-  //     arr = this.fb.array(fgs);
-  //   }
-
-  //   return arr;
-  // }
-
   initForm(model?: Company) {
     this.companyFormGroup = this.fb.group({
       id: [model ? model.id : Helpers.emptyGuid],
@@ -73,6 +47,7 @@ export class CompanyComponent implements OnInit {
       fein: [model ? model.fein : ''],
       phones: model ? this.commonFormGroups.initPhoneArray(model.phones) : this.commonFormGroups.initPhoneArray()
     });
+    console.log('company phones: ', this.companyFormGroup.get('phones'));
   }
 
   save() {
@@ -81,13 +56,13 @@ export class CompanyComponent implements OnInit {
     console.log('formValue: ', formValue);
   }
 
-  addPhone() {
-    const control = <FormArray>this.companyFormGroup.get('phones');
-    control.push(this.commonFormGroups.initPhone());
-  }
+  // addPhone() {
+  //   const control = <FormArray>this.companyFormGroup.get('phones');
+  //   control.push(this.commonFormGroups.initPhone());
+  // }
 
-  removePhone(i: number) {
-    const control = <FormArray>this.companyFormGroup.get('phones');
-    control.removeAt(i);
-  }
+  // removePhone(i: number) {
+  //   const control = <FormArray>this.companyFormGroup.get('phones');
+  //   control.removeAt(i);
+  // }
 }

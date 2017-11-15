@@ -13,9 +13,8 @@ import { ChangeDetectorRef } from '@angular/core/src/change_detection/change_det
 })
 export class PhoneListFormComponent implements OnInit {
   @Input() parentForm: FormGroup;
-  @Input() phones: Phone[] = [];
+  @Input() phones: Phone[] = Array<Phone>();
   commonFormGroups: CommonFormGroups;
-  // phoneTypes: PhoneType[];
 
   constructor(
       private fb: FormBuilder) {
@@ -23,17 +22,10 @@ export class PhoneListFormComponent implements OnInit {
    }
 
   ngOnInit() {
-    console.log('init phone list: ', this.parentForm);
-    // this.getPhoneTypes();
+    console.log('phone list - init: ', this.parentForm);
+    console.log('phone list - phones: ', this.phones);
   }
 
-  // getPhoneTypes() {
-  //   this.phoneTypes = [
-  //     { id: '07d86f09-c3e2-4082-ae1d-8b668b0aedcb', type: 'Home' },
-  //     { id: '9411e3a2-b4c9-4833-87ed-36f8dd360b8e', type: 'Cell' },
-  //     { id: '07e8614f-077f-4469-8670-e7d083f2eb0c', type: 'Work' }
-  //   ];
-  // }
 
   addPhone() {
     console.log('adding phone...');
@@ -42,8 +34,11 @@ export class PhoneListFormComponent implements OnInit {
     phone.phoneNumber = '';
     phone.phoneTypeId = Helpers.emptyGuid;
 
+    if (!this.phones) {
+      this.phones = [];
+    }
     this.phones.push(phone);
-
+    console.log('phone list - phones after add: ', this.phones);
   }
 
   removePhone(i: number) {

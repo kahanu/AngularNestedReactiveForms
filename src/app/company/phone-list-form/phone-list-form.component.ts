@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Phone, PhoneType, Company } from '../../shared/models/models';
 import { FormArray } from '@angular/forms/src/model';
-import { CommonFormGroups } from '../../shared/formgroups/common-form-groups';
 import { Helpers } from '../../shared/helpers/helpers';
 import { ChangeDetectorRef } from '@angular/core/src/change_detection/change_detector_ref';
 
@@ -14,21 +13,16 @@ import { ChangeDetectorRef } from '@angular/core/src/change_detection/change_det
 export class PhoneListFormComponent implements OnInit {
   @Input() parentForm: FormGroup;
   @Input() phones: Phone[] = Array<Phone>();
-  commonFormGroups: CommonFormGroups;
 
   constructor(
       private fb: FormBuilder) {
-    this.commonFormGroups = new CommonFormGroups(fb);
    }
 
   ngOnInit() {
-    console.log('phone list - init: ', this.parentForm);
-    console.log('phone list - phones: ', this.phones);
   }
 
 
   addPhone() {
-    console.log('adding phone...');
     const phone = new Phone();
     phone.id = Helpers.emptyGuid;
     phone.phoneNumber = '';
@@ -38,7 +32,6 @@ export class PhoneListFormComponent implements OnInit {
       this.phones = [];
     }
     this.phones.push(phone);
-    console.log('phone list - phones after add: ', this.phones);
   }
 
   removePhone(i: number) {

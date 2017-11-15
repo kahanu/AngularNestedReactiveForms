@@ -3,13 +3,6 @@
     <div class="col-md-6">
       <h2>Company</h2>
       <form [formGroup]="companyFormGroup">
-
-          <div class="checkbox">
-            <label for="useBlankForm">
-              <input type="checkbox">Use Blank Form</label>
-
-          </div>
-
         <div class="row">
           <div class="form-group col-md-6">
             <label for="name">Name</label>
@@ -21,30 +14,7 @@
           </div>
         </div>
         <app-phone-list-form [parentForm]="companyFormGroup" [phones]="company?.phones"></app-phone-list-form>
-        <!-- <div formArrayName="phones">
-          <div *ngFor="let phone of companyFormGroup.get('phones')['controls']; let i = index" class="panel panel-default">
-            <div class="panel-heading">
-              <span>Phone {{ i + 1 }}</span>
-              <i class="glyphicon glyphicon-remove pull-right" (click)="removePhone(i)"></i>
-            </div>
-            <div [formGroupName]="i" class="panel-body">
-              <div class="form-group col-md-6">
-                <label for="phone">Phone Number</label>
-                <input type="text" formControlName="phoneNumber" class="form-control">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="phoneType">Phone Type</label>
-                <select class="form-control" formControlName="phoneTypeId">
-                  <option [ngValue]="type.id" *ngFor="let type of phoneTypes">{{ type.type }}</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div> -->
         <div class="row">
-          <!-- <div class="form-group col-md-12">
-            <button type="button" class="btn btn-default btn-sm" (click)="addPhone()">Add Phone</button>
-          </div> -->
           <div class="form-group col-md-12">
             <button type="button" class="btn btn-primary" (click)="save()">Save</button>
           </div>

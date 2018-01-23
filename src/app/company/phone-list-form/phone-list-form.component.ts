@@ -12,12 +12,11 @@ import { Helpers } from '../../shared/helpers/helpers';
 export class PhoneListFormComponent implements OnInit {
   @Input() parentForm: FormGroup;
   @Input() phones: Phone[] = Array<Phone>();
-  commonFormGroups: CommonFormGroups;
 
   constructor(
       private fb: FormBuilder,
-      private cd: ChangeDetectorRef) {
-        this.commonFormGroups = new CommonFormGroups(fb);
+      private cd: ChangeDetectorRef,
+      private commonFormGroups: CommonFormGroups) {
    }
 
   ngOnInit() {

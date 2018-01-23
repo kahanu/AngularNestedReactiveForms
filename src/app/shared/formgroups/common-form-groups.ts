@@ -1,7 +1,9 @@
-import { FormBuilder } from '@angular/forms/src/form_builder';
+import { FormBuilder } from '@angular/forms';
 import { Phone } from '../models/models';
 import { Helpers } from '../helpers/helpers';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class CommonFormGroups {
   constructor(private fb: FormBuilder) {}
 

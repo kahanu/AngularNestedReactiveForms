@@ -15,11 +15,11 @@ export class CompanyComponent implements OnInit {
   company: Company;
   phoneTypes: PhoneType[];
   formResult: Company;
-  commonFormGroups: CommonFormGroups;
 
-  constructor(private fb: FormBuilder) {
-    this.commonFormGroups = new CommonFormGroups(fb);
-  }
+  constructor(
+    private fb: FormBuilder,
+    private commonFormGroups: CommonFormGroups
+  ) {}
 
   ngOnInit() {
     this.getCompany(); // comment out for blank form.
@@ -34,7 +34,7 @@ export class CompanyComponent implements OnInit {
       phones: [
         {
           id: Helpers.newGuid,
-          phoneNumber: '818 384-4438',
+          phoneNumber: '818 333-2222',
           phoneTypeId: '9411e3a2-b4c9-4833-87ed-36f8dd360b8e'
         },
         {

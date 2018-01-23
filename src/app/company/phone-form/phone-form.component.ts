@@ -13,12 +13,12 @@ export class PhoneFormComponent implements OnInit {
   @Input() phone: Phone;
 
   phoneForm: FormGroup;
-  commonFormGroups: CommonFormGroups;
   phoneTypes: PhoneType[];
 
-  constructor(private fb: FormBuilder) {
-    this.commonFormGroups = new CommonFormGroups(fb);
-  }
+  constructor(
+    private fb: FormBuilder,
+    private commonFormGroups: CommonFormGroups
+  ) {}
 
   ngOnInit() {
     this.initForm(this.phone);

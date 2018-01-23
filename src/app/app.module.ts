@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { CompanyComponent } from './company/company.component';
 import { PhoneListFormComponent } from './company/phone-list-form/phone-list-form.component';
 import { PhoneFormComponent } from './company/phone-form/phone-form.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PhoneFormComponent } from './company/phone-form/phone-form.component';
   imports: [
     BrowserModule,
     SharedModule,
+    CoreModule,
     AppRoutingModule
   ],
   providers: [],

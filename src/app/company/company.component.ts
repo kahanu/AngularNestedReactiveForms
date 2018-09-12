@@ -47,10 +47,16 @@ export class CompanyComponent implements OnInit {
   }
 
   initForm(model?: Company) {
+    // this.companyFormGroup = this.fb.group({
+    //   id: [model ? model.id : Helpers.emptyGuid],
+    //   name: [model ? model.name : '', [Validators.required]],
+    //   fein: [model ? model.fein : '']
+    // });
+
     this.companyFormGroup = this.fb.group({
-      id: [model ? model.id : Helpers.emptyGuid],
-      name: [model ? model.name : '', [Validators.required]],
-      fein: [model ? model.fein : '']
+      id: [model.id || Helpers.emptyGuid],
+      name: [model.name || '', [Validators.required]],
+      fein: [model.fein || '']
     });
   }
 

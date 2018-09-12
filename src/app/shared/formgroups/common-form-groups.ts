@@ -7,12 +7,17 @@ import { Injectable } from '@angular/core';
 export class CommonFormGroups {
   constructor(private fb: FormBuilder) {}
 
-
   initPhone(model?: Phone) {
+    // return this.fb.group({
+    //   id: [model ? model.id : Helpers.emptyGuid],
+    //   phoneNumber: [model ? model.phoneNumber : ''],
+    //   phoneTypeId: [model ? model.phoneTypeId : Helpers.emptyGuid]
+    // });
+
     return this.fb.group({
-      id: [model ? model.id : Helpers.emptyGuid],
-      phoneNumber: [model ? model.phoneNumber : ''],
-      phoneTypeId: [model ? model.phoneTypeId : Helpers.emptyGuid]
+      id: [model.id || Helpers.emptyGuid],
+      phoneNumber: [model.phoneNumber || ''],
+      phoneTypeId: [model.phoneTypeId || Helpers.emptyGuid]
     });
   }
 

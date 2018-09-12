@@ -47,12 +47,6 @@ export class CompanyComponent implements OnInit {
   }
 
   initForm(model?: Company) {
-    // this.companyFormGroup = this.fb.group({
-    //   id: [model ? model.id : Helpers.emptyGuid],
-    //   name: [model ? model.name : '', [Validators.required]],
-    //   fein: [model ? model.fein : '']
-    // });
-
     this.companyFormGroup = this.fb.group({
       id: [model.id || Helpers.emptyGuid],
       name: [model.name || '', [Validators.required]],
@@ -63,6 +57,5 @@ export class CompanyComponent implements OnInit {
   save() {
     const formValue = this.companyFormGroup.value;
     this.formResult = formValue;
-    console.log('formValue: ', formValue);
   }
 }

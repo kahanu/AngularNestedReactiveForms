@@ -9,7 +9,9 @@ import { PhoneFormComponent } from './phone-form/phone-form.component';
 @NgModule({
   imports: [SharedModule, CompanyRoutingModule],
   declarations: [
-    CompanyComponent
+    CompanyComponent,
+    PhoneFormComponent,
+    PhoneListFormComponent
   ]
 })
 export class CompanyModule {}

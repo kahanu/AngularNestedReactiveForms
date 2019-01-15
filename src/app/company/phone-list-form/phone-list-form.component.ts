@@ -1,7 +1,6 @@
-import { CommonFormGroups } from './../../shared/formgroups/common-form-groups';
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
-import { Phone, PhoneType, Company } from '../../shared/models/models';
+import { FormGroup, FormArray } from '@angular/forms';
+import { Phone } from '../../shared/models/models';
 import { Helpers } from '../../shared/helpers/helpers';
 
 @Component({
@@ -14,9 +13,7 @@ export class PhoneListFormComponent implements OnInit {
   @Input() phones: Phone[] = Array<Phone>();
 
   constructor(
-      private fb: FormBuilder,
-      private cd: ChangeDetectorRef,
-      private commonFormGroups: CommonFormGroups) {
+      private cd: ChangeDetectorRef) {
    }
 
   ngOnInit() {

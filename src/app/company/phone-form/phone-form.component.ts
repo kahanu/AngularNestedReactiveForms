@@ -1,6 +1,6 @@
 import { CommonFormGroups } from './../../shared/formgroups/common-form-groups';
 import { Component, OnInit, Input } from '@angular/core';
-import { FormArray, FormGroup, FormBuilder } from '@angular/forms';
+import { FormArray, FormGroup } from '@angular/forms';
 import { Phone, PhoneType } from '../../shared/models/models';
 
 @Component({
@@ -16,7 +16,6 @@ export class PhoneFormComponent implements OnInit {
   phoneTypes: PhoneType[];
 
   constructor(
-    private fb: FormBuilder,
     private commonFormGroups: CommonFormGroups
   ) {}
 
